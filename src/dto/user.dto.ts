@@ -12,13 +12,13 @@ export class CreateUserDTO {
 	@IsString()
 	@MinLength(5)
 	@MaxLength(12)
-	anon_name: string
+	anon_name!: string
 
 	@IsNotEmpty()
 	@IsString()
 	@MinLength(6)
 	@MaxLength(60)
-	password: string
+	password!: string
 
 	@IsString()
 	@MaxLength(15)
@@ -31,18 +31,18 @@ export class UpdateUserDTO {
 	@IsString()
 	@MinLength(5)
 	@MaxLength(12)
-	anon_name: string
+	anon_name!: string
 
 	@IsString()
 	@MaxLength(255)
 	@IsOptional()
-	profile_picture: string
+	profile_picture!: string
 
 	@IsOptional()
 	@IsString()
 	@MinLength(6)
 	@MaxLength(60)
-	password_hash: string
+	password_hash!: string
 
 	@IsOptional()
 	@IsBoolean()

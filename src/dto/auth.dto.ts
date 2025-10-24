@@ -5,11 +5,11 @@ export class AuthLoginDTO {
   @IsString()
   @MinLength(5)
   @MaxLength(12)
-  anon_name: string;
+  anon_name!: string;
 
   @IsNotEmpty({ message: "A palavra-passe não pode estar vazia" })
   @IsString()
   @MinLength(6)
   @MaxLength(60)
-  password: string;
+  password!: string;
 }
