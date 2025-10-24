@@ -1,7 +1,7 @@
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import dotenv from "dotenv";
-import path from "path";
+import "reflect-metadata"
+import { DataSource } from "typeorm"
+import dotenv from "dotenv"
+import path from "path"
 
 dotenv.config()
 
@@ -16,7 +16,9 @@ const AppDataSource = new DataSource({
 	database: process.env.DB_NAME,
 	synchronize: !isProd,
 	logging: !isProd,
-	ssl: isProd ? { rejectUnauthorized: false } : undefined,
+	ssl: {
+		rejectUnauthorized: false,
+	},
 	entities: [path.join(__dirname, "../entities/*.{js,ts}")],
 	migrations: [path.join(__dirname, "../migrations/*.{js,ts}")],
 })
