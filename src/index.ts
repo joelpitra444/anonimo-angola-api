@@ -16,6 +16,7 @@ app.use(
 		origin: [
 			"http://localhost:3000",
 			"https://anonimo-angola-three.vercel.app",
+			"https://anonimo-angola.vercel.app"
 		],
 		credentials: true,
 	})
