@@ -1,10 +1,7 @@
-import { DataSource } from "typeorm"
-import * as dotenv from "dotenv"
-import { Answer } from "@/entities/answer.entity"
-import { Post } from "@/entities/post.entity"
-import { User } from "@/entities/user.entity"
-import { Comment } from "@/entities/comment.entity"
-import { Report } from "@/entities/report.entity"
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config()
 
@@ -17,27 +14,11 @@ const AppDataSource = new DataSource({
 	username: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,
 	database: process.env.DB_NAME,
-	logging: true,
-	synchronize: false,
-	ssl:
-		process.env.NODE_ENV === "production"
-			? { rejectUnauthorized: false }
-			: false,
-	entities: [User, Post, Comment, Answer, Report],
-	migrations: [
-		isProd
-			? `${process.cwd()}/dist/migrations/*.js`
-			: `${process.cwd()}/src/migrations/*.ts`,
-	],
-	subscribers: [],
+	synchronize: !isProd,
+	logging: !isProd,
+	ssl: isProd ? { rejectUnauthorized: false } : undefined,
+	entities: [path.join(__dirname, "../entities/*.{js,ts}")],
+	migrations: [path.join(__dirname, "../migrations/*.{js,ts}")],
 })
-
-AppDataSource.initialize()
-	.then(() => {
-		console.log("Banco de dados conectado com sucesso")
-	})
-	.catch((err) => {
-		console.error("Erro durante a conexão:", err)
-	})
 
 export default AppDataSource

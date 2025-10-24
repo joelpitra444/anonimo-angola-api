@@ -1,44 +1,48 @@
-import moduleAlias from "module-alias";
-import * as path from "path";
+import type { Request, Response } from "express"
+import dotenv from "dotenv"
+import express from "express"
+import cors from "cors"
+import path from "path"
+import AppDataSource from "./database/connection"
+import routes from "./routes"
+import { setupSwagger } from "./swagger"
 
-const isProd = process.env.NODE_ENV === "production";
+dotenv.config()
 
-moduleAlias.addAlias(
-  "@",
-  isProd ? path.join(__dirname) : path.join(__dirname, "..", "src")
-);
-
-import "module-alias/register";
-import "reflect-metadata";
-
-import dotenv from "dotenv";
-dotenv.config();
-
-import { setupSwagger } from "./swagger";
-
-import express from "express";
-import cors from "cors";
-import "./database/connection";
-import routes from "./routes";
-
-const PORT = process.env.PORT || 8080;
-
-const app = express();
+const app = express()
 
 app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://anonimo-angola.vercel.app"],
-    credentials: true,
-  })
-);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+	cors({
+		origin: [
+			"http://localhost:3000",
+			"https://anonimo-angola-three.vercel.app",
+		],
+		credentials: true,
+	})
+)
 
-app.use("/public", express.static(path.join(__dirname, "../public")));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/public", express.static(path.join(__dirname, "../public")))
+app.get("/", (req: Request, res: Response) => {
+	res.json({ status: "ok", timestamp: new Date() })
+})
+app.use(routes)
+setupSwagger(app)
 
-app.use(routes);
-setupSwagger(app);
+async function garantirConexaoBancoDeDados() {
+	if (!AppDataSource.isInitialized) {
+		await AppDataSource.initialize()
+		console.log("Conexão com o banco de dados estabelecida (sob demanda).")
+	}
+}
 
-app.listen(PORT, () => {
-  console.log(`Swagger docs: https://anonimo-angola-api.onrender.com/api-docs`);
-});
+export default async function handler(req: Request, res: Response) {
+	try {
+		await garantirConexaoBancoDeDados()
+		app(req, res)
+	} catch (erro) {
+		console.error("Erro ao inicializar a conexão com o banco de dados:", erro)
+		res.status(500).json({ erro: "Falha ao conectar ao banco de dados" })
+	}
+}
