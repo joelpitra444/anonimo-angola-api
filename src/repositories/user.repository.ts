@@ -1,5 +1,5 @@
-import { User } from "@/entities/user.entity"
-import AppDataSource from "@/database/connection"
+import { User } from "../entities/user.entity"
+import AppDataSource from "../database/connection"
 import { Repository } from "typeorm"
 
 export class UserRepository {

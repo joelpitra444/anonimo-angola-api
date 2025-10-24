@@ -1,9 +1,9 @@
-import { CreateAnswerDTO } from "@/dto/answer.dto";
-import { Answer } from "@/entities/answer.entity";
-import { AnswerRepository } from "@/repositories/answer.repository";
-import { CommentRepository } from "@/repositories/comment.repository";
-import { UserRepository } from "@/repositories/user.repository";
-import badWordsFilter from "@/utils/bad-words-filter";
+import { CreateAnswerDTO } from "../dto/answer.dto";
+import { Answer } from "../entities/answer.entity";
+import { AnswerRepository } from "../repositories/answer.repository";
+import { CommentRepository } from "../repositories/comment.repository";
+import { UserRepository } from "../repositories/user.repository";
+import badWordsFilter from "../utils/bad-words-filter";
 
 export class AnswerService {
   private answerRepository: AnswerRepository;

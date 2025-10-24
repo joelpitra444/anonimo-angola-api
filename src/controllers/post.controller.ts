@@ -1,8 +1,9 @@
-import { CreatePostDTO, UpdatePostDTO } from "@/dto/post.dto";
-import { PostService } from "@/service/post.service";
+
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { Request, Response } from "express";
+import { CreatePostDTO, UpdatePostDTO } from "../dto/post.dto";
+import { PostService } from "../service/post.service";
 
 class PostController {
   private postService: PostService;
@@ -105,7 +106,7 @@ class PostController {
           text: post.text,
           created_at: post.created_at,
           status: post.status,
-          comments: post.comments.map((comment) => ({
+          comments: post.comments.map((comment: { id: any; user: { id: any; anon_name: any; profile_picture: any; }; text: any; created_at: any; updated_at: any; status: any; }) => ({
             id: comment.id,
             userId: comment.user.id,
             anon_name: comment.user.anon_name,
@@ -153,7 +154,7 @@ class PostController {
           text: post.text,
           created_at: post.created_at,
           status: post.status,
-          comments: post.comments.map((comment) => ({
+          comments: post.comments.map((comment: { id: any; user: { id: any; anon_name: any; profile_picture: any; }; text: any; created_at: any; updated_at: any; status: any; }) => ({
             id: comment.id,
             userId: comment.user.id,
             anon_name: comment.user.anon_name,

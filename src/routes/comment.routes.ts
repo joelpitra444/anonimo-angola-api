@@ -1,5 +1,5 @@
-import commentController from "@/controllers/comment.controller";
-import { authMiddleware } from "@/middleware/auth.middleware";
+import commentController from "../controllers/comment.controller";
+import { authMiddleware } from "../middleware/auth.middleware";
 import { Router } from "express";
 
 const router = Router();

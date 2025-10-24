@@ -1,8 +1,8 @@
-import { AuthLoginDTO } from "@/dto/auth.dto"
-import { CreateUserDTO } from "@/dto/user.dto"
-import { User } from "@/entities/user.entity"
-import { UserRepository } from "@/repositories/user.repository"
-import { getRandomAvatar } from "@/utils/random-avatar"
+import { AuthLoginDTO } from "../dto/auth.dto"
+import { CreateUserDTO } from "../dto/user.dto"
+import { User } from "../entities/user.entity"
+import { UserRepository } from "../repositories/user.repository"
+import { getRandomAvatar } from "../utils/random-avatar"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 

@@ -1,5 +1,6 @@
-import AppDataSource from "@/database/connection";
-import { Answer } from "@/entities/answer.entity";
+
+import AppDataSource from "../database/connection";
+import { Answer } from "../entities/answer.entity";
 import { Repository } from "typeorm";
 
 export class AnswerRepository {

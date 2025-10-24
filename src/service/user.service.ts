@@ -1,8 +1,7 @@
-import { User } from "@/entities/user.entity"
+import { User } from "../entities/user.entity"
 import bcrypt from "bcrypt"
-import { UserRepository } from "@/repositories/user.repository"
-import { CreateUserDTO, UpdateUserDTO } from "@/dto/user.dto"
-import { getRandomAvatar } from "@/utils/random-avatar"
+import { UserRepository } from "../repositories/user.repository"
+import { UpdateUserDTO } from "../dto/user.dto"
 
 export class UserService {
 	private userRepository: UserRepository

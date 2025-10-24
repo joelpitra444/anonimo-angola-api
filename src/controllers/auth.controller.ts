@@ -1,9 +1,10 @@
 import { Request, Response } from "express"
 import { plainToInstance } from "class-transformer"
-import { AuthLoginDTO } from "@/dto/auth.dto"
 import { validate } from "class-validator"
-import { AuthService } from "@/service/auth.service"
-import { CreateUserDTO } from "@/dto/user.dto"
+import { AuthLoginDTO } from "../dto/auth.dto"
+import { CreateUserDTO } from "../dto/user.dto"
+import { AuthService } from "../service/auth.service"
+
 
 class AuthController {
 	private authService: AuthService

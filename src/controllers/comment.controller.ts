@@ -1,9 +1,9 @@
-import { CreateCommentDTO, UpdateCommentDTO } from "@/dto/comment.dto";
-import { Comment } from "@/entities/comment.entity";
-import { CommentService } from "@/service/comment.service";
+
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { Request, Response } from "express";
+import { CreateCommentDTO, UpdateCommentDTO } from "../dto/comment.dto";
+import { CommentService } from "../service/comment.service";
 
 class CommentController {
   private commentService: CommentService;

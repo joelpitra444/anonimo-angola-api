@@ -1,8 +1,9 @@
-import { CreateAnswerDTO } from "@/dto/answer.dto";
-import { AnswerService } from "@/service/answer.service";
+
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { Request, Response } from "express";
+import { AnswerService } from "../service/answer.service";
+import { CreateAnswerDTO } from "../dto/answer.dto";
 
 export class AnswerController {
   private answerService: AnswerService;

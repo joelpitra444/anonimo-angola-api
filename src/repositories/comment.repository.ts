@@ -1,5 +1,5 @@
-import AppDataSource from "@/database/connection";
-import { Comment } from "@/entities/comment.entity";
+import AppDataSource from "../database/connection";
+import { Comment } from "../entities/comment.entity";
 import { Repository } from "typeorm";
 
 export class CommentRepository {

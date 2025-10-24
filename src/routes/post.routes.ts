@@ -1,5 +1,5 @@
-import postController from "@/controllers/post.controller"
-import { authMiddleware } from "@/middleware/auth.middleware"
+import postController from "../controllers/post.controller"
+import { authMiddleware } from "../middleware/auth.middleware"
 import { Router } from "express"
 
 const router = Router()

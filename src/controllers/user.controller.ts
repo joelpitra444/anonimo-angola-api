@@ -1,9 +1,8 @@
 import { Response, Request } from "express"
-import { UserRepository } from "@/repositories/user.repository"
-import { UserService } from "@/service/user.service"
 import { validate } from "class-validator"
-import { UpdateUserDTO } from "@/dto/user.dto"
 import { plainToInstance } from "class-transformer"
+import { UpdateUserDTO } from "../dto/user.dto"
+import { UserService } from "../service/user.service"
 
 class UserController {
 	private userService: UserService

@@ -1,5 +1,5 @@
-import AppDataSource from "@/database/connection";
-import { Post } from "@/entities/post.entity";
+import AppDataSource from "../database/connection";
+import { Post } from "../entities/post.entity";
 import { Repository } from "typeorm";
 
 export class PostRepository {

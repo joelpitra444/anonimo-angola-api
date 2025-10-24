@@ -1,5 +1,5 @@
-import answerController from "@/controllers/answer.controller";
-import { authMiddleware } from "@/middleware/auth.middleware";
+import answerController from "../controllers/answer.controller";
+import { authMiddleware } from "../middleware/auth.middleware";
 import { Router } from "express";
 
 const routes = Router();

@@ -1,9 +1,9 @@
-import { CreateCommentDTO, UpdateCommentDTO } from "@/dto/comment.dto";
-import { Comment } from "@/entities/comment.entity";
-import { CommentRepository } from "@/repositories/comment.repository";
-import { PostRepository } from "@/repositories/post.repository";
-import { UserRepository } from "@/repositories/user.repository";
-import badWordsFilter from "@/utils/bad-words-filter";
+import { CreateCommentDTO, UpdateCommentDTO } from "../dto/comment.dto";
+import { Comment } from "../entities/comment.entity";
+import { CommentRepository } from "../repositories/comment.repository";
+import { PostRepository } from "../repositories/post.repository";
+import { UserRepository } from "../repositories/user.repository";
+import badWordsFilter from "../utils/bad-words-filter";
 
 export class CommentService {
   private commentRepository: CommentRepository;
