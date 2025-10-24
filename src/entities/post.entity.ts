@@ -13,27 +13,27 @@ import { Comment } from "./comment.entity";
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  id!: string;
 
   @Column({ type: "text" })
-  text: string;
+  text!: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at!: Date;
 
   @ManyToOne(() => User, { onDelete: "CASCADE" })
-  user: User;
+  user!: User;
 
   @OneToMany(() => Comment, (comment) => comment.post, { cascade: true })
-  comments: Comment[];
+  comments!: Comment[];
 
   @Column({
     type: "enum",
     enum: ["active", "deleted", "flagged"],
     default: "active",
   })
-  status: "active" | "deleted" | "flagged";
+  status!: "active" | "deleted" | "flagged";
 }

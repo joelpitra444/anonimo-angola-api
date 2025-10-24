@@ -12,27 +12,27 @@ import { User } from "./user.entity";
 @Entity()
 export class Comment {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  id!: string;
 
   @Column({ type: "text" })
-  text: string;
+  text!: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at!: Date;
 
   @ManyToOne(() => Post, { onDelete: "CASCADE" })
-  post: Post;
+  post!: Post;
 
   @ManyToOne(() => User, { onDelete: "CASCADE" })
-  user: User;
+  user!: User;
 
   @Column({
     type: "enum",
     enum: ["active", "deleted", "flagged"],
     default: "active",
   })
-  status: "active" | "deleted" | "flagged";
+  status!: "active" | "deleted" | "flagged";
 }

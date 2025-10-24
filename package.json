@@ -39,9 +39,8 @@
 		"build": "tsc",
 		"start": "node dist/index.js",
 		"dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-		"migrate": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:run -d src/database/connection.ts"
-	},
-	"_moduleAliases": {
-		"@": "dist"
+		"migrate": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:run -d src/database/connection.ts",
+		"migration:generate": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:generate -d src/database/connection.ts src/migrations/firstMigration",
+		"migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create src/migrations/firstMigration"
 	}
 }

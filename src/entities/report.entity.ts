@@ -10,20 +10,20 @@ import { User } from "./user.entity";
 @Entity()
 export class Report {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  id!: string;
 
   @Column()
-  reason: string;
+  reason!: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at!: Date;
 
   @Column({ type: "enum", enum: ["post", "comment", "answer"] })
-  target_type: "post" | "comment" | "answer";
+  target_type!: "post" | "comment" | "answer";
 
   @Column()
-  target_id: number;
+  target_id!: number;
 
   @ManyToOne(() => User, { onDelete: "CASCADE" })
-  user: User;
+  user!: User;
 }
